@@ -10,7 +10,7 @@ function AddReviewForm(): JSX.Element {
   });
 
 
-  const handlerOnChange = ({target}: ChangeEvent<HTMLTextAreaElement>) => {
+  const handlerChange = ({target}: ChangeEvent<HTMLTextAreaElement>) => {
     const value = target.value;
     setUserAdd(()=> ({
       ...userAdd,
@@ -37,7 +37,7 @@ function AddReviewForm(): JSX.Element {
           name="review-text"
           id="review-text"
           placeholder="Review text"
-          onChange={handlerOnChange}
+          onChange={handlerChange}
           value={userAdd.reviewText}
         >
         </textarea>

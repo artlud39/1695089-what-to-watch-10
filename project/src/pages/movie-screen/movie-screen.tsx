@@ -117,8 +117,8 @@ function MovieScreen({films}: MovieScreenType): JSX.Element {
 
               <div className="film-card__text">
                 <p>{description}</p>
-                <p className="film-card__director"><strong>Director:{director}</strong></p>
-                <p className="film-card__starring"><strong>Starring: {starring.join(',')} and other</strong></p>
+                <p className="film-card__director"><strong>Director: {director}</strong></p>
+                <p className="film-card__starring"><strong>Starring: {starring.join(', ')} and other</strong></p>
               </div>
             </div>
           </div>

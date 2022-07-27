@@ -8,18 +8,20 @@ type FilmsListProps = {
 
 function FilmsList({films}: FilmsListProps): JSX.Element {
 
-  const [isActive, setFilmActive] = useState<string | null >(null);
+  const [filmActiveId, setFilmActiveId] = useState<string | null>(null);
 
   return (
     <div className="catalog__films-list">
       {films.map((film) => (
         <Film
-          filmActive={isActive}
-          setActive={setFilmActive}
+          isFilmActive={film.id === filmActiveId}
+          setFilmActive={setFilmActiveId}
           picture={film.picture}
           title={film.title}
           key={film.id}
           id={film.id}
+          video={film.video}
+          poster={film.poster}
         />
       ))}
     </div>

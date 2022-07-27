@@ -56,6 +56,7 @@ export const films: FilmsType[] = [
   {
     id: '1',
     video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    poster: 'img/player-poster.jpg',
     title: titles[getRandomInteger(0, titles.length - 1)],
     bigPicture: 'img/bg-the-grand-budapest-hotel.jpg',
     picture: pictures[getRandomInteger(0, pictures.length - 1)],
@@ -91,7 +92,8 @@ export const films: FilmsType[] = [
   },
   {
     id: '2',
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    video: 'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm',
+    poster: 'img/player-poster.jpg',
     title: titles[getRandomInteger(0, titles.length - 1)],
     bigPicture: 'img/bg-the-grand-budapest-hotel.jpg',
     picture: pictures[getRandomInteger(0, pictures.length - 1)],
@@ -128,6 +130,7 @@ export const films: FilmsType[] = [
   {
     id: '3',
     video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    poster: 'img/player-poster.jpg',
     title: titles[getRandomInteger(0, titles.length - 1)],
     bigPicture: 'img/bg-the-grand-budapest-hotel.jpg',
     picture: pictures[getRandomInteger(0, pictures.length - 1)],
@@ -163,7 +166,8 @@ export const films: FilmsType[] = [
   },
   {
     id: '4',
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    video: 'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm',
+    poster: 'img/player-poster.jpg',
     title: titles[getRandomInteger(0, titles.length - 1)],
     bigPicture: 'img/bg-the-grand-budapest-hotel.jpg',
     picture: pictures[getRandomInteger(0, pictures.length - 1)],
@@ -200,6 +204,7 @@ export const films: FilmsType[] = [
   {
     id: '5',
     video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    poster: 'img/player-poster.jpg',
     title: titles[getRandomInteger(0, titles.length - 1)],
     bigPicture: 'img/bg-the-grand-budapest-hotel.jpg',
     picture: pictures[getRandomInteger(0, pictures.length - 1)],
@@ -235,7 +240,8 @@ export const films: FilmsType[] = [
   },
   {
     id: '6',
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    video: 'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm',
+    poster: 'img/player-poster.jpg',
     title: titles[getRandomInteger(0, titles.length - 1)],
     bigPicture: 'img/bg-the-grand-budapest-hotel.jpg',
     picture: pictures[getRandomInteger(0, pictures.length - 1)],
@@ -272,6 +278,7 @@ export const films: FilmsType[] = [
   {
     id: '7',
     video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    poster: 'img/player-poster.jpg',
     title: titles[getRandomInteger(0, titles.length - 1)],
     bigPicture: 'img/bg-the-grand-budapest-hotel.jpg',
     picture: pictures[getRandomInteger(0, pictures.length - 1)],
@@ -307,7 +314,8 @@ export const films: FilmsType[] = [
   },
   {
     id: '8',
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    video: 'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm',
+    poster: 'img/player-poster.jpg',
     title: titles[getRandomInteger(0, titles.length - 1)],
     bigPicture: 'img/bg-the-grand-budapest-hotel.jpg',
     picture: pictures[getRandomInteger(0, pictures.length - 1)],

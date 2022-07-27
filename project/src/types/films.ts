@@ -8,6 +8,7 @@ export type ReviewType = {
 export type FilmsType = {
   id: string,
   video: string,
+  poster: string,
   title: string,
   bigPicture: string,
   picture: string,
