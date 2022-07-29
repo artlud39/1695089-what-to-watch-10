@@ -2,10 +2,10 @@ import {useEffect, useRef} from 'react';
 
 type VideoPlayerProps = {
   video: string,
-  poster: string
+  poster: string,
 }
 
-function VideoPlayer({video, poster}: VideoPlayerProps): JSX.Element {
+function VideoPlayer({video, poster}: VideoPlayerProps) {
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -15,7 +15,7 @@ function VideoPlayer({video, poster}: VideoPlayerProps): JSX.Element {
     1000);
 
     return () => clearTimeout(playVideoTimeout);
-  });
+  }, [video]);
 
   return (
     <video
