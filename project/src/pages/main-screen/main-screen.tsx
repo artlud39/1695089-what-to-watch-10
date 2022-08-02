@@ -2,23 +2,18 @@ import FilmsList from '../../components/films-list/films-list';
 import GenresList from '../../components/genres-list/genres-list';
 import { Genre } from '../../const';
 import { useAppSelector } from '../../hooks';
-import { FilmsType } from '../../types/films';
 import { State } from '../../types/state';
 
 const getActiveGenre = (state: State) => state.genre;
 const getFilteredFilms = (state: State) => state.films;
 
-type MainScreenProps = {
-  films: FilmsType[];
-}
-
-function MainScreen({films}: MainScreenProps): JSX.Element {
+function MainScreen(): JSX.Element {
 
 
-  const allFilms = useAppSelector(getFilteredFilms);
   const activeGenre = useAppSelector(getActiveGenre);
+  const films = useAppSelector((state) => state.films);
 
-  const filterFilms = (activeGenre === Genre.AllGenres) ? allFilms : allFilms.filter((film) => film.genre === activeGenre);
+  const filterFilms = (activeGenre === Genre.AllGenres) ? films : films.filter((film) => film.genre === activeGenre);
 
 
   return (
@@ -88,7 +83,7 @@ function MainScreen({films}: MainScreenProps): JSX.Element {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
           <GenresList/>
-          <FilmsList films={filterFilms} />
+          <FilmsList films={films} />
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
           </div>

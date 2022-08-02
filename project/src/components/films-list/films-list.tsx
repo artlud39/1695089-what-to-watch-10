@@ -3,12 +3,12 @@ import { FilmsType } from '../../types/films';
 import { useState } from 'react';
 
 type FilmsListProps = {
-  films: FilmsType[];
+  films: FilmsType;
 }
 
 function FilmsList({films}: FilmsListProps): JSX.Element {
 
-  const [filmActiveId, setFilmActiveId] = useState<string | null>(null);
+  const [filmActiveId, setFilmActiveId] = useState<number | null>(null);
 
   return (
     <div className="catalog__films-list">

@@ -3,12 +3,12 @@ import {AppRoute} from '../../const';
 import VideoPlayer from '../video-player/video-player';
 
 interface IFilmProps {
-  id: string,
+  id: number,
   picture: string,
   title: string,
   video: string,
   poster: string,
-  setFilmActive: React.Dispatch<React.SetStateAction<string | null>>,
+  setFilmActive: React.Dispatch<React.SetStateAction<number | null>>,
   isFilmActive: boolean
 }
 
