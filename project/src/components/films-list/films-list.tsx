@@ -1,27 +1,28 @@
 import Film from '../film/film';
-import { FilmsType } from '../../types/films';
 import { useState } from 'react';
+import { FilmsType } from '../../types/films';
+import { useAppSelector } from '../../hooks';
+import { getActiveGenre } from '../../store/select';
 
-type FilmsListProps = {
-  films: FilmsType;
+type FilmsListType = {
+  films: FilmsType,
 }
 
-function FilmsList({films}: FilmsListProps): JSX.Element {
+function FilmsList({films}: FilmsListType): JSX.Element {
 
   const [filmActiveId, setFilmActiveId] = useState<number | null>(null);
 
+  const activeGenre = useAppSelector(getActiveGenre);
+  const filterFilms = (activeGenre === 'All Genres') ? films : films.filter((film) => film.genre === activeGenre);
+
   return (
     <div className="catalog__films-list">
-      {films.map((film) => (
+      {filterFilms.map((film) => (
         <Film
           isFilmActive={film.id === filmActiveId}
           setFilmActive={setFilmActiveId}
-          picture={film.picture}
-          title={film.title}
           key={film.id}
-          id={film.id}
-          video={film.video}
-          poster={film.poster}
+          film={film}
         />
       ))}
     </div>

@@ -1,22 +1,22 @@
 import React from 'react';
-import { Genre } from '../../const';
+
 
 type GenreProps = {
-  genre: Genre;
-  activeGenre: Genre;
-  handleGenreClick: (genre: Genre) => void;
+  genre: string;
+  activeGenre: string;
+  onGenreClick: (genre: string) => void;
 }
 
-const GenreItem = ({genre, activeGenre, handleGenreClick}: GenreProps) => {
+const GenreItem = ({genre, activeGenre, onGenreClick}: GenreProps) => {
 
-  const onGenreClick = (e: React.MouseEvent) => {
+  const handleGenreClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    handleGenreClick(genre);
+    onGenreClick(genre);
   };
 
   return (
     <li className={`catalog__genres-item ${activeGenre === genre ? 'catalog__genres-item--active' : ''}`}>
-      <a href={`/${genre}`} className="catalog__genres-link" onClick={onGenreClick}>{genre}</a>
+      <a href={`/${genre}`} className="catalog__genres-link" onClick={handleGenreClick}>{genre}</a>
     </li>
   );
 };

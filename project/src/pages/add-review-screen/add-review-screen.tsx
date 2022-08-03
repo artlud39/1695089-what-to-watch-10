@@ -1,20 +1,25 @@
-import { FilmsType} from '../../types/films';
 import Logo from '../../components/logo/logo';
 import AddReviewForm from '../../components/add-review-form/add-review-form';
+import { Navigate, useParams } from 'react-router-dom';
+import { useAppSelector } from '../../hooks';
+import {AppRoute} from '../../const';
 
-type AddReviewScreenType = {
-  film: FilmsType,
-}
 
+function AddReviewScreen(): JSX.Element {
 
-function AddReviewScreen({film}: AddReviewScreenType): JSX.Element {
-  const {bigPicture, title, picture} = film;
+  const { id } = useParams();
+  const films = useAppSelector((state) => state.films);
+  const film = films.find((movie) => String(movie.id) === id);
+
+  if (!film) {
+    return <Navigate to={AppRoute.NotFound} />;
+  }
 
   return (
     <section className="film-card film-card--full">
       <div className="film-card__header">
         <div className="film-card__bg">
-          <img src={bigPicture} alt={title} />
+          <img src={film.backgroundImage} alt={film.name} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -27,7 +32,7 @@ function AddReviewScreen({film}: AddReviewScreenType): JSX.Element {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <a href="film-page.html" className="breadcrumbs__link">{title}</a>
+                <a href="film-page.html" className="breadcrumbs__link">{film.name}</a>
               </li>
               <li className="breadcrumbs__item">
                 <a href="#todo" className="breadcrumbs__link">Add review</a>
@@ -48,7 +53,7 @@ function AddReviewScreen({film}: AddReviewScreenType): JSX.Element {
         </header>
 
         <div className="film-card__poster film-card__poster--small">
-          <img src={picture} alt={title} width="218" height="327" />
+          <img src={film.posterImage} alt={film.name} width="218" height="327" />
         </div>
       </div>
 

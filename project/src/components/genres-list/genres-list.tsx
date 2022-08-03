@@ -1,40 +1,27 @@
-import { Genre } from '../../const';
 import { useAppSelector, useAppDispatch } from '../../hooks';
-import { changeGenreAction } from '../../store/action';
-import { State } from '../../types/state';
+import { changeGenreAction } from '../../store/actions';
+import { selectFilmGenres } from '../../store/select';
 import GenreItem from '../genre/genre';
 
-const GenreList = [
-  'AllGenres',
-  'Comedies',
-  'Crime',
-  'Documentary',
-  'Dramas',
-  'Horror',
-  'Kids & Family',
-  'Romance',
-  'Sci-Fi',
-  'Thrillers',
-];
-
-const getActiveGenre = (state: State) => state.genre;
-
 function GenresList(): JSX.Element {
-  const activeGenre = useAppSelector(getActiveGenre);
+
+  const activeGenre = useAppSelector((state) => state.genre);
+  const genres = useAppSelector(selectFilmGenres);
+
   const dispatch = useAppDispatch();
 
-  const handleGenreClick = (genre: Genre) => {
+  const onChangeGenreHandler = (genre: string) => {
     dispatch(changeGenreAction(genre));
   };
 
   return (
     <ul className="catalog__genres-list">
-      {GenreList.map((genre, index) => (
+      {genres.map((genre) => (
         <GenreItem
           key={genre}
-          genre={Object.values(Genre)[index]}
+          genre={genre}
           activeGenre={activeGenre}
-          handleGenreClick={handleGenreClick}
+          onGenreClick={onChangeGenreHandler}
         />
       ))}
     </ul>

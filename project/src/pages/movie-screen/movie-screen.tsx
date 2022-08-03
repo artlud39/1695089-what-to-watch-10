@@ -1,31 +1,28 @@
-import { FilmsType } from '../../types/films';
 import Logo from '../../components/logo/logo';
 import {Navigate, useParams} from 'react-router-dom';
 import {AppRoute} from '../../const';
-
-type MovieScreenType = {
-  films: FilmsType[],
-}
+import { useAppSelector } from '../../hooks';
 
 
-function MovieScreen({films}: MovieScreenType): JSX.Element {
+function MovieScreen(): JSX.Element {
+
+  const films = useAppSelector((state) => state.films);
 
   const { id } = useParams();
-  const film = films.find((movie) => movie.id === id);
+  const film = films.find((movie) => String(movie.id) === id);
 
   if (!film) {
     return <Navigate to={AppRoute.NotFound} />;
   }
 
   const {
-    title,
-    bigPicture,
-    picture,
+    name,
+    backgroundImage,
+    previewImage,
     genre,
     released,
     rating,
-    ratingLevel,
-    ratingCount,
+    scoresCount,
     description,
     director,
     starring
@@ -36,7 +33,7 @@ function MovieScreen({films}: MovieScreenType): JSX.Element {
       <section className="film-card film-card--full">
         <div className="film-card__hero">
           <div className="film-card__bg">
-            <img src={bigPicture} alt={title} />
+            <img src={backgroundImage} alt={name} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -60,7 +57,7 @@ function MovieScreen({films}: MovieScreenType): JSX.Element {
 
           <div className="film-card__wrap">
             <div className="film-card__desc">
-              <h2 className="film-card__title">{title}</h2>
+              <h2 className="film-card__title">{name}</h2>
               <p className="film-card__meta">
                 <span className="film-card__genre">{genre}</span>
                 <span className="film-card__year">{released}</span>
@@ -89,7 +86,7 @@ function MovieScreen({films}: MovieScreenType): JSX.Element {
         <div className="film-card__wrap film-card__translate-top">
           <div className="film-card__info">
             <div className="film-card__poster film-card__poster--big">
-              <img src={picture} alt={title} width="218" height="327" />
+              <img src={previewImage} alt={name} width="218" height="327" />
             </div>
 
             <div className="film-card__desc">
@@ -110,8 +107,8 @@ function MovieScreen({films}: MovieScreenType): JSX.Element {
               <div className="film-rating">
                 <div className="film-rating__score">{rating}</div>
                 <p className="film-rating__meta">
-                  <span className="film-rating__level">{ratingLevel}</span>
-                  <span className="film-rating__count">{ratingCount} ratings</span>
+                  <span className="film-rating__level"> Very good </span>
+                  <span className="film-rating__count">{scoresCount} ratings</span>
                 </p>
               </div>
 

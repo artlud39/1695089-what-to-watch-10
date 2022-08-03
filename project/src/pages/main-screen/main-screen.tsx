@@ -1,20 +1,10 @@
 import FilmsList from '../../components/films-list/films-list';
 import GenresList from '../../components/genres-list/genres-list';
-import { Genre } from '../../const';
 import { useAppSelector } from '../../hooks';
-import { State } from '../../types/state';
-
-const getActiveGenre = (state: State) => state.genre;
-const getFilteredFilms = (state: State) => state.films;
 
 function MainScreen(): JSX.Element {
 
-
-  const activeGenre = useAppSelector(getActiveGenre);
   const films = useAppSelector((state) => state.films);
-
-  const filterFilms = (activeGenre === Genre.AllGenres) ? films : films.filter((film) => film.genre === activeGenre);
-
 
   return (
     <>
@@ -83,7 +73,7 @@ function MainScreen(): JSX.Element {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
           <GenresList/>
-          <FilmsList films={films} />
+          <FilmsList films={films}/>
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
           </div>

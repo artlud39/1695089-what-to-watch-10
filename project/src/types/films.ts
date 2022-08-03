@@ -7,7 +7,7 @@ export type ReviewType = {
 
 export type FilmType = {
   id: number,
-  nameFilm: string,
+  name: string,
   posterImage: string,
   previewImage: string,
   backgroundImage: string,

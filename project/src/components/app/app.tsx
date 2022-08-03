@@ -8,13 +8,9 @@ import PlayerScreen from '../../pages/player-screen/player-screen';
 import SingInScreen from '../../pages/sing-in-screen/sing-in-screen';
 import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import PrivateRoute from '../../components/private-route/private-route';
-import { FilmsType } from '../../types/films';
 import { useAppSelector } from '../../hooks';
 import LoadingScreen from '../../pages/loading-screen/loading-screen';
 
-type AppScreenProps = {
-  films: FilmsType;
-}
 
 function App(): JSX.Element {
   const { isDataLoaded } = useAppSelector((state) => state);
