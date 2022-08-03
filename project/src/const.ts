@@ -14,16 +14,8 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
-export enum Genre {
-  AllGenres = 'All Genres',
-  Comedy = 'Comedy',
-  Crime = 'Crime',
-  Documentary = 'Documentary',
-  Drama = 'Dramas',
-  Horror = 'Horror',
-  Family = 'Kids & Family',
-  Romance = 'Romance',
-  SciFi = 'Sci-Fi',
-  Thriller = 'Thrillers',
+export enum APIRoute {
+  Films = '/films',
+  Login = '/login',
+  Logout = '/logout',
 }
-

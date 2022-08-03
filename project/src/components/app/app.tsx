@@ -8,20 +8,23 @@ import PlayerScreen from '../../pages/player-screen/player-screen';
 import SingInScreen from '../../pages/sing-in-screen/sing-in-screen';
 import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import PrivateRoute from '../../components/private-route/private-route';
-import { FilmsType } from '../../types/films';
+import { useAppSelector } from '../../hooks';
+import LoadingScreen from '../../pages/loading-screen/loading-screen';
 
-type AppScreenProps = {
-  films: FilmsType[];
-}
 
-function App({films}: AppScreenProps): JSX.Element {
-  const [firstFilm] = films;
+function App(): JSX.Element {
+  const { isDataLoaded } = useAppSelector((state) => state);
+
+  if (isDataLoaded) {
+    return <LoadingScreen />;
+  }
+
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<MainScreen films={films} />}
+          element={<MainScreen />}
         />
         <Route
           path={AppRoute.SingIn}
@@ -31,25 +34,25 @@ function App({films}: AppScreenProps): JSX.Element {
           path={AppRoute.MyList}
           element={
             <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-              <MyListScreen films={films} />
+              <MyListScreen />
             </PrivateRoute>
           }
         />
         <Route
           path={AppRoute.Movie}
           element={
-            <MovieScreen films={films}/>
+            <MovieScreen />
           }
         />
         <Route
           path={AppRoute.AddReview}
           element={
-            <AddReviewScreen film={firstFilm}/>
+            <AddReviewScreen />
           }
         />
         <Route
           path={AppRoute.Player}
-          element={<PlayerScreen film={firstFilm}/>}
+          element={<PlayerScreen />}
         />
         <Route
           path={AppRoute.NotFound}

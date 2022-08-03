@@ -1,14 +1,20 @@
-import { FilmsType } from '../../types/films';
+import { Navigate, useParams } from 'react-router-dom';
+import { useAppSelector } from '../../hooks';
+import {AppRoute} from '../../const';
 
-type MoviePlayerScreen = {
-  film: FilmsType,
-}
 
-function PlayerScreen({film}: MoviePlayerScreen): JSX.Element {
-  const {video} = film;
+function PlayerScreen(): JSX.Element {
+  const films = useAppSelector((state) => state.films);
+  const {id} = useParams();
+  const film = films.find((movie) => String(movie.id) === id);
+
+  if (!film) {
+    return <Navigate to={AppRoute.NotFound} />;
+  }
+
   return (
     <div className="player">
-      <video src={video} className="player__video" poster="img/player-poster.jpg"></video>
+      <video src={film.videoLink} className="player__video" poster="img/player-poster.jpg"></video>
 
       <button type="button" className="player__exit">Exit</button>
 

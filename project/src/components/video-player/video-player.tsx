@@ -1,11 +1,11 @@
 import {useEffect, useRef} from 'react';
 
 type VideoPlayerProps = {
-  video: string,
-  poster: string,
+  previewVideoLink: string,
+  posterImage: string,
 }
 
-function VideoPlayer({video, poster}: VideoPlayerProps) {
+function VideoPlayer({previewVideoLink, posterImage}: VideoPlayerProps): JSX.Element {
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -15,13 +15,13 @@ function VideoPlayer({video, poster}: VideoPlayerProps) {
     1000);
 
     return () => clearTimeout(playVideoTimeout);
-  }, [video]);
+  }, [previewVideoLink]);
 
   return (
     <video
-      src={video}
+      src={previewVideoLink}
       className="player__video"
-      poster={poster}
+      poster={posterImage}
       ref={videoRef}
       muted
       loop

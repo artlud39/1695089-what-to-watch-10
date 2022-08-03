@@ -1,12 +1,11 @@
 import FilmsList from '../../components/films-list/films-list';
-import { FilmsType } from '../../types/films';
 import Logo from '../../components/logo/logo';
+import { useAppSelector } from '../../hooks';
 
-type MyListScreenType = {
-  films: FilmsType[];
-}
 
-function MyListScreen({films}: MyListScreenType): JSX.Element {
+function MyListScreen(): JSX.Element {
+
+  const films = useAppSelector((state) => state.films);
 
   return (
     <div className="user-page">

@@ -5,23 +5,28 @@ export type ReviewType = {
   dateReview: string
 };
 
-export type FilmsType = {
-  id: string,
-  video: string,
-  poster: string,
-  title: string,
-  bigPicture: string,
-  picture: string,
-  genre: string,
-  released: number,
-  runTime: string,
-  starring: string[],
-  director: string,
+export type FilmType = {
+  id: number,
+  name: string,
+  posterImage: string,
+  previewImage: string,
+  backgroundImage: string,
+  backgroundColor: string,
+  videoLink: string,
+  previewVideoLink: string,
   description: string,
   rating: number,
-  ratingLevel: string,
-  ratingCount: number,
-  reviews: ReviewType[]
-};
+  scoresCount: number,
+  director: string,
+  starring: [string],
+  runTime: number,
+  genre: string,
+  released: number,
+  isFavorite: boolean,
+  };
+
+export type FilmsType = FilmType[];
 
 export type UserAddFilmRiview = string;
+
+
