@@ -27,6 +27,19 @@ export type FilmType = {
 
 export type FilmsType = FilmType[];
 
+export type CommentType = {
+  comment: string,
+  date: string,
+  id: number,
+  rating: number,
+  user: {
+    id: number,
+    name: string,
+  },
+}
+
+export type CommentsType = CommentType[];
+
 export type UserAddFilmRiview = string;
 
 

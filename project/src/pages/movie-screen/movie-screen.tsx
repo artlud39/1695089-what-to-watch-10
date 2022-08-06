@@ -2,7 +2,10 @@ import Logo from '../../components/logo/logo';
 import {Navigate, useParams} from 'react-router-dom';
 import {AppRoute} from '../../const';
 import { useAppSelector } from '../../hooks';
-
+import Tabs from '../../components/tabs/tabs';
+import Overview from '../../components/overview/overview';
+import Details from '../../components/details/details';
+import Reviews from '../../components/reviews/reviews';
 
 function MovieScreen(): JSX.Element {
 
@@ -21,12 +24,8 @@ function MovieScreen(): JSX.Element {
     previewImage,
     genre,
     released,
-    rating,
-    scoresCount,
-    description,
-    director,
-    starring
   } = film;
+
 
   return (
     <>
@@ -90,33 +89,7 @@ function MovieScreen(): JSX.Element {
             </div>
 
             <div className="film-card__desc">
-              <nav className="film-nav film-card__nav">
-                <ul className="film-nav__list">
-                  <li className="film-nav__item film-nav__item--active">
-                    <a href="#todo" className="film-nav__link">Overview</a>
-                  </li>
-                  <li className="film-nav__item">
-                    <a href="#todo" className="film-nav__link">Details</a>
-                  </li>
-                  <li className="film-nav__item">
-                    <a href="#todo" className="film-nav__link">Reviews</a>
-                  </li>
-                </ul>
-              </nav>
-
-              <div className="film-rating">
-                <div className="film-rating__score">{rating}</div>
-                <p className="film-rating__meta">
-                  <span className="film-rating__level"> Very good </span>
-                  <span className="film-rating__count">{scoresCount} ratings</span>
-                </p>
-              </div>
-
-              <div className="film-card__text">
-                <p>{description}</p>
-                <p className="film-card__director"><strong>Director: {director}</strong></p>
-                <p className="film-card__starring"><strong>Starring: {starring.join(', ')} and other</strong></p>
-              </div>
+              <Tabs/>
             </div>
           </div>
         </div>
