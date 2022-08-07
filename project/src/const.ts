@@ -20,6 +20,7 @@ export enum APIRoute {
   Logout = '/logout',
 }
 
+
 export enum Tab {
   Overview = 'overview',
   Details = 'details',
