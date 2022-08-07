@@ -19,3 +19,10 @@ export enum APIRoute {
   Login = '/login',
   Logout = '/logout',
 }
+
+
+export enum Tab {
+  Overview = 'overview',
+  Details = 'details',
+  Reviews = 'reviews',
+}
