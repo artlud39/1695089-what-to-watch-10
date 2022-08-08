@@ -26,3 +26,5 @@ export enum Tab {
   Details = 'details',
   Reviews = 'reviews',
 }
+
+export const SHOW_FILMS_STEP = 8;

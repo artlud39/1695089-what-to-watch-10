@@ -1,11 +1,14 @@
 import Logo from '../../components/logo/logo';
+import { useAppDispatch } from '../../hooks';
+import { resetFilmsCount } from '../../store/actions';
 
 function SingInScreen(): JSX.Element {
+  const dispatch = useAppDispatch();
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
         <div className="logo">
-          <Logo/>
+          <Logo onClick={()=> dispatch(resetFilmsCount())}/>
         </div>
 
         <h1 className="page-title user-page__title">Sign in</h1>

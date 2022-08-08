@@ -1,17 +1,18 @@
 import FilmsList from '../../components/films-list/films-list';
 import Logo from '../../components/logo/logo';
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { resetFilmsCount } from '../../store/actions';
 
 
 function MyListScreen(): JSX.Element {
-
+  const dispatch = useAppDispatch();
   const films = useAppSelector((state) => state.films);
 
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
         <div className="logo">
-          <Logo/>
+          <Logo onClick={()=> dispatch(resetFilmsCount())}/>
         </div>
 
         <h1 className="page-title user-page__title">My list <span className="user-page__film-count">{films.length}</span></h1>
