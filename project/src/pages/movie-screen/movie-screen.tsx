@@ -1,13 +1,11 @@
 import Logo from '../../components/logo/logo';
 import {Navigate, useParams} from 'react-router-dom';
 import {AppRoute} from '../../const';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppSelector } from '../../hooks';
 import Tabs from '../../components/tabs/tabs';
 import SimilarFilms from '../../components/similar-films/similar-film';
-import { resetFilmsCount } from '../../store/actions';
 
 function MovieScreen(): JSX.Element {
-  const dispatch = useAppDispatch();
   const films = useAppSelector((state) => state.films);
 
   const { id } = useParams();
@@ -27,8 +25,6 @@ function MovieScreen(): JSX.Element {
     released,
   } = film;
 
-
-
   return (
     <>
       <section className="film-card film-card--full">
@@ -41,7 +37,7 @@ function MovieScreen(): JSX.Element {
 
           <header className="page-header film-card__head">
             <div className="logo">
-              <Logo onClick={()=> dispatch(resetFilmsCount())}/>
+              <Logo/>
             </div>
 
             <ul className="user-block">

@@ -11,7 +11,3 @@ export const loadFilms = createAction<FilmsType>('data/loadFilms');
 export const setDataLoadedStatus = createAction<boolean>('data/setDataLoadedStatus');
 
 export const requireAuthorization = createAction<AuthorizationStatus>('user/requireAuthorization');
-
-export const showMoreFilms = createAction<number>('data/showMoreFilms');
-
-export const resetFilmsCount = createAction('data/reset');

@@ -1,13 +1,10 @@
 import Logo from '../../components/logo/logo';
 import AddReviewForm from '../../components/add-review-form/add-review-form';
 import { Navigate, useParams } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppSelector } from '../../hooks';
 import {AppRoute} from '../../const';
-import { resetFilmsCount } from '../../store/actions';
-
 
 function AddReviewScreen(): JSX.Element {
-  const dispatch = useAppDispatch();
   const { id } = useParams();
   const films = useAppSelector((state) => state.films);
   const film = films.find((movie) => String(movie.id) === id);
@@ -27,7 +24,7 @@ function AddReviewScreen(): JSX.Element {
 
         <header className="page-header">
           <div className="logo">
-            <Logo onClick={()=> dispatch(resetFilmsCount())}/>
+            <Logo />
           </div>
 
           <nav className="breadcrumbs">
