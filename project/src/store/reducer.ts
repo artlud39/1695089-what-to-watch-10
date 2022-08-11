@@ -14,7 +14,7 @@ const initialState: InitialState = {
   genre: 'All Genres',
   films: [],
   isDataLoaded: false,
-  authorizationStatus: AuthorizationStatus.Unknown
+  authorizationStatus: AuthorizationStatus.Unknown,
 };
 
 const reducer = createReducer(initialState, (builder) => {

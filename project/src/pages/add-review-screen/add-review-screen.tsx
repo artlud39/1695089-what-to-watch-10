@@ -4,9 +4,7 @@ import { Navigate, useParams } from 'react-router-dom';
 import { useAppSelector } from '../../hooks';
 import {AppRoute} from '../../const';
 
-
 function AddReviewScreen(): JSX.Element {
-
   const { id } = useParams();
   const films = useAppSelector((state) => state.films);
   const film = films.find((movie) => String(movie.id) === id);

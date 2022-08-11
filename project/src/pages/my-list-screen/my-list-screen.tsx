@@ -4,7 +4,6 @@ import { useAppSelector } from '../../hooks';
 
 
 function MyListScreen(): JSX.Element {
-
   const films = useAppSelector((state) => state.films);
 
   return (

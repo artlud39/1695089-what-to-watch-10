@@ -6,7 +6,6 @@ import Tabs from '../../components/tabs/tabs';
 import SimilarFilms from '../../components/similar-films/similar-film';
 
 function MovieScreen(): JSX.Element {
-
   const films = useAppSelector((state) => state.films);
 
   const { id } = useParams();
@@ -25,7 +24,6 @@ function MovieScreen(): JSX.Element {
     genre,
     released,
   } = film;
-
 
   return (
     <>
