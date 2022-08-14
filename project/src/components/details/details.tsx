@@ -1,11 +1,11 @@
 import { FilmType } from '../../types/films';
 
 
-type DetailsPropsType = {
+type DetailsProps = {
   film: FilmType,
 }
 
-function Details({film}: DetailsPropsType) {
+function Details({film}: DetailsProps): JSX.Element {
 
   const {
     director,
@@ -13,7 +13,6 @@ function Details({film}: DetailsPropsType) {
     runTime,
     genre,
     released,
-
   } = film;
 
   return (

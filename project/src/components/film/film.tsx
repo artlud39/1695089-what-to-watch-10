@@ -1,15 +1,15 @@
 import { generatePath, Link } from 'react-router-dom';
-import {AppRoute} from '../../const';
+import { AppRoute } from '../../const';
 import VideoPlayer from '../video-player/video-player';
 import { FilmType } from '../../types/films';
 
-interface IFilmProps {
+interface FilmProps {
   film: FilmType,
   setFilmActive: React.Dispatch<React.SetStateAction<number | null>>,
   isFilmActive: boolean
 }
 
-function Film({film, setFilmActive, isFilmActive}: IFilmProps): JSX.Element {
+function Film({film, setFilmActive, isFilmActive}: FilmProps): JSX.Element {
 
   const handleMouseEnter = () => {
     setFilmActive(film.id);

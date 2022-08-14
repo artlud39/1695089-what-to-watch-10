@@ -8,10 +8,7 @@ type PromoFilmProps = {
 
 function PromoFilm({promoFilm}: PromoFilmProps) {
 
-  const {
-    name,
-    backgroundImage,
-  } = promoFilm;
+  const {name, backgroundImage} = promoFilm;
 
   return (
     <section className="film-card">

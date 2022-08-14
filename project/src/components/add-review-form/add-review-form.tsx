@@ -1,4 +1,4 @@
-import {useState, ChangeEvent} from 'react';
+import { useState, ChangeEvent } from 'react';
 
 const ratings: number[] = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
 
