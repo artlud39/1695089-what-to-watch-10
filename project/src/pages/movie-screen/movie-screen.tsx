@@ -1,6 +1,6 @@
 import Logo from '../../components/logo/logo';
-import {Navigate, useParams} from 'react-router-dom';
-import {AppRoute} from '../../const';
+import { Navigate, useParams } from 'react-router-dom';
+import { AppRoute } from '../../const';
 import { useAppSelector } from '../../hooks';
 import Tabs from '../../components/tabs/tabs';
 import SimilarFilms from '../../components/similar-films/similar-film';

@@ -1,6 +1,6 @@
 import { Navigate, useParams } from 'react-router-dom';
 import { useAppSelector } from '../../hooks';
-import {AppRoute} from '../../const';
+import { AppRoute } from '../../const';
 
 
 function PlayerScreen(): JSX.Element {

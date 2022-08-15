@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import {Tab} from '../../const';
+import { Tab } from '../../const';
 import { FilmType } from '../../types/films';
 import Details from '../details/details';
 import Overview from '../overview/overview';
@@ -14,7 +14,7 @@ function Tabs({film}: CardOverviewProps): JSX.Element {
 
   const [activeTab, setActiveTab] = useState(Tab.Overview);
 
-  const renderTab = (tab: Tab) => {
+  const renderTab = (tab: Tab): JSX.Element => {
     switch (tab) {
       case Tab.Overview:
         return <Overview film={film}/>;

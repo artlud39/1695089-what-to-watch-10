@@ -10,7 +10,7 @@ function GenresList(): JSX.Element {
 
   const dispatch = useAppDispatch();
 
-  const onChangeGenreHandler = (genre: string) => {
+  const handleChangeGenre = (genre: string) => {
     dispatch(changeGenreAction(genre));
   };
 
@@ -21,7 +21,7 @@ function GenresList(): JSX.Element {
           key={genre}
           genre={genre}
           activeGenre={activeGenre}
-          onGenreClick={onChangeGenreHandler}
+          onGenreClick={handleChangeGenre}
         />
       ))}
     </ul>

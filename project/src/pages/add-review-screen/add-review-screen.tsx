@@ -1,8 +1,8 @@
 import Logo from '../../components/logo/logo';
 import AddReviewForm from '../../components/add-review-form/add-review-form';
-import { Navigate, useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import { useAppSelector } from '../../hooks';
-import {AppRoute} from '../../const';
+import { AppRoute } from '../../const';
 
 function AddReviewScreen(): JSX.Element {
   const { id } = useParams();
@@ -30,10 +30,10 @@ function AddReviewScreen(): JSX.Element {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <a href="film-page.html" className="breadcrumbs__link">{film.name}</a>
+                <Link to={`/${AppRoute.Movie}/${id}`} className="breadcrumbs__link">{film.name}</Link>
               </li>
               <li className="breadcrumbs__item">
-                <a href="#todo" className="breadcrumbs__link">Add review</a>
+                <Link to={`/${AppRoute.AddReview}/${id}`} className="breadcrumbs__link">Add review</Link>
               </li>
             </ul>
           </nav>

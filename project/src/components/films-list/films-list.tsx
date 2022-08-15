@@ -1,22 +1,22 @@
 import Film from '../film/film';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FilmsType } from '../../types/films';
 import { useAppSelector } from '../../hooks';
-import { getActiveGenre} from '../../store/select';
+import { getActiveGenre } from '../../store/select';
 import ShowMoreButton from '../show-more-button/show-more-button';
-import { SHOW_FILMS_STEP } from '../../const';
+import { Gerne, SHOW_FILMS_STEP } from '../../const';
 
-type FilmsListType = {
+type FilmsListProps = {
   films: FilmsType,
 }
 
-function FilmsList({films}: FilmsListType): JSX.Element {
+function FilmsList({films}: FilmsListProps): JSX.Element {
   const [filmActiveId, setFilmActiveId] = useState<number | null>(null);
 
   const [showCount, setShowCount] = useState<number>(SHOW_FILMS_STEP);
 
   const activeGenre = useAppSelector(getActiveGenre);
-  const filterFilms = (activeGenre === 'All Genres') ? films : films.filter((film) => film.genre === activeGenre);
+  const filterFilms = (activeGenre === Gerne.AllGeneres) ? films : films.filter((film) => film.genre === activeGenre);
 
   const renderFilms = filterFilms.slice(0, showCount);
 
@@ -25,6 +25,8 @@ function FilmsList({films}: FilmsListType): JSX.Element {
   };
 
   const isShowButton = filterFilms.length >= showCount;
+
+  useEffect(() => () => setShowCount(SHOW_FILMS_STEP) , [activeGenre]);
 
   return (
     <>

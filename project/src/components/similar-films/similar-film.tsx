@@ -1,11 +1,11 @@
 import { FilmsType } from '../../types/films';
 import FilmsList from '../films-list/films-list';
 
-type SimilarFilmsType = {
+type SimilarFilmsProps = {
   similarFilms: FilmsType,
 }
 
-function SimilarFilms({similarFilms}: SimilarFilmsType): JSX.Element {
+function SimilarFilms({similarFilms}: SimilarFilmsProps): JSX.Element {
 
   return (
     <div className="catalog catalog--like-this">

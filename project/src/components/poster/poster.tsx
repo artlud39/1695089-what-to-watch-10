@@ -16,7 +16,7 @@ function Poster({promoFilm}: PosterProps): JSX.Element {
         <h2 className="film-card__title">{name}</h2>
         <p className="film-card__meta">
           <span className="film-card__genre">{genre}</span>
-          <span className="film-card__year">{released}</span>
+          <time className="film-card__year">{released}</time>
         </p>
 
         <div className="film-card__buttons">

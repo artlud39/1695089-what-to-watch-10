@@ -1,11 +1,11 @@
 import { FilmType } from '../../types/films';
 
 
-type OverviewPropsType = {
+type OverviewProps = {
   film: FilmType,
 }
 
-function Overview({film}: OverviewPropsType) {
+function Overview({film}: OverviewProps) {
 
   const {
     rating,

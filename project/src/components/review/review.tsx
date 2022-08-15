@@ -1,11 +1,11 @@
 import { CommentType } from '../../types/films';
 
 
-type DetailsPropsType = {
+type DetailsProps = {
   review: CommentType,
 }
 
-function Review({review}: DetailsPropsType) {
+function Review({review}: DetailsProps) {
   const {
     comment,
     date,
@@ -20,7 +20,7 @@ function Review({review}: DetailsPropsType) {
 
         <footer className="review__details">
           <cite className="review__author">{user.name}</cite>
-          <time className="review__date" dateTime="2016-12-24">{date}</time>
+          <time className="review__date" dateTime={date}>{date}</time>
         </footer>
       </blockquote>
 
