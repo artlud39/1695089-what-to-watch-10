@@ -1,10 +1,11 @@
 import { Navigate, useParams } from 'react-router-dom';
 import { useAppSelector } from '../../hooks';
 import { AppRoute } from '../../const';
+import { selectFilterFilms } from '../../store/films-slice/select';
 
 
 function PlayerScreen(): JSX.Element {
-  const films = useAppSelector((state) => state.films);
+  const films = useAppSelector(selectFilterFilms);
   const {id} = useParams();
   const film = films.find((movie) => String(movie.id) === id);
 

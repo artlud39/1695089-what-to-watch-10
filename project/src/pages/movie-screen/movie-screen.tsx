@@ -4,9 +4,10 @@ import { AppRoute } from '../../const';
 import { useAppSelector } from '../../hooks';
 import Tabs from '../../components/tabs/tabs';
 import SimilarFilms from '../../components/similar-films/similar-film';
+import { selectFilterFilms } from '../../store/films-slice/select';
 
 function MovieScreen(): JSX.Element {
-  const films = useAppSelector((state) => state.films);
+  const films = useAppSelector(selectFilterFilms);
 
   const { id } = useParams();
   const film = films.find((movie) => String(movie.id) === id);
@@ -23,11 +24,16 @@ function MovieScreen(): JSX.Element {
     previewImage,
     genre,
     released,
+    backgroundColor,
   } = film;
+
+  const filmCardStyle = {
+    backgroundColor: backgroundColor,
+  };
 
   return (
     <>
-      <section className="film-card film-card--full">
+      <section className="film-card film-card--full" style={filmCardStyle}>
         <div className="film-card__hero">
           <div className="film-card__bg">
             <img src={backgroundImage} alt={name} />

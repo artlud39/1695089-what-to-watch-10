@@ -3,10 +3,11 @@ import GenresList from '../../components/genres-list/genres-list';
 import PromoFilm from '../../components/promo-film/promo-film';
 import { useAppSelector } from '../../hooks';
 import { promoFilm } from '../../mock/comments';
+import { selectFilterFilms } from '../../store/films-slice/select';
 
 function MainScreen(): JSX.Element {
 
-  const films = useAppSelector((state) => state.films);
+  const films = useAppSelector(selectFilterFilms);
 
   return (
     <>

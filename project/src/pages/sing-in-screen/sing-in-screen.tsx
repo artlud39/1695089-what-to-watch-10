@@ -4,7 +4,10 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import { loginAction } from '../../store/api-actions';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { Navigate } from 'react-router-dom';
-import { selectAuthStatus, selectError } from '../../store/select';
+import { selectAuthStatus, selectError } from '../../store/auth-slice/select';
+import { setError } from '../../store/auth-slice/auth-slice';
+
+const MESSAGE_ERROR_LOGIN = 'We can’t recognize this email and password combination. Please try again.';
 
 function SingInScreen(): JSX.Element {
 
@@ -17,7 +20,9 @@ function SingInScreen(): JSX.Element {
 
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-    dispatch(loginAction({login: email, password}));
+    (!email || !password)
+      ? dispatch(setError(MESSAGE_ERROR_LOGIN))
+      : dispatch(loginAction({login: email, password}));
   };
 
   if (authStatus === AuthorizationStatus.Auth) {

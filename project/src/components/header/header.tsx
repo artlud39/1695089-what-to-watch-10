@@ -3,7 +3,8 @@ import { Link, useMatch } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { logoutAction } from '../../store/api-actions';
-import { selectAuthStatus } from '../../store/select';
+import { selectAuthStatus } from '../../store/auth-slice/select';
+
 
 function Header(): JSX.Element {
   const isLoginPath = useMatch(AppRoute.SingIn);
