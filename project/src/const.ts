@@ -3,8 +3,8 @@ export enum AppRoute {
   SingIn = 'singin',
   MyList = 'mylist',
   Movie = 'movie/:id',
-  AddReview = 'addreview/:id',
-  Player = 'player',
+  AddReview = 'addreview/:id/review',
+  Player = 'player/:id',
   NotFound = '*',
 }
 
@@ -19,6 +19,7 @@ export enum APIRoute {
   Promo = '/promo',
   Login = '/login',
   Logout = '/logout',
+  Comments = '/comments',
 }
 
 export enum Tab {
@@ -35,8 +36,11 @@ export enum SliceName {
   Auth = 'AUTH',
   Promo = 'PROMO',
   Films = 'FILMS',
+  Comments = 'COMMENTS',
+  Film = 'FILM',
 }
 
 export const SHOW_FILMS_STEP = 8;
+export const MAX_COUNT_SHOW_SIMILAR_FILMS = 4;
 export const TIMEOUT_SHOW_ERROR = 5000;
 export const DEFAULT_GENRE = 'All Genres';

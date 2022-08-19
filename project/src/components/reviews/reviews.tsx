@@ -1,7 +1,10 @@
-import { comments } from '../../mock/comments';
+import { selectComments } from '../../store/comments-slice/select';
 import Review from '../review/review';
+import {useAppSelector} from '../../hooks/index';
 
 function Reviews() {
+
+  const comments = useAppSelector(selectComments);
 
   return (
     <div className="film-card__reviews film-card__row">

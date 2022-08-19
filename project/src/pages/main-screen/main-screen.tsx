@@ -2,7 +2,6 @@ import FilmsList from '../../components/films-list/films-list';
 import GenresList from '../../components/genres-list/genres-list';
 import PromoFilm from '../../components/promo-film/promo-film';
 import { useAppSelector } from '../../hooks';
-import { promoFilm } from '../../mock/comments';
 import { selectFilterFilms } from '../../store/films-slice/select';
 
 function MainScreen(): JSX.Element {
@@ -11,7 +10,7 @@ function MainScreen(): JSX.Element {
 
   return (
     <>
-      <PromoFilm promoFilm={promoFilm}/>
+      <PromoFilm />
       <div className="page-content">
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>

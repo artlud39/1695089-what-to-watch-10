@@ -1,53 +1,57 @@
-import { useState, ChangeEvent } from 'react';
+import RatingSelect from '../rating/rating';
+import { FormEvent, useState } from 'react';
+import { useAppDispatch } from '../../hooks/index';
+import { sendCommentAction } from '../../store/api-actions';
+import { useAppSelector } from '../../hooks/index';
+import { selectIsSendingComment } from '../../store/comments-slice/select';
 
-const ratings: number[] = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+const MIN_RATING = 0;
 
-function AddReviewForm(): JSX.Element {
+type CommentFormType = {
+  filmId: number;
+}
 
-  const [userAdd, setUserAdd] = useState({
-    rating: '',
-    reviewText: '',
-  });
+function AddReviewForm({filmId}: CommentFormType): JSX.Element {
+  const dispatch = useAppDispatch();
+  const isSending = useAppSelector(selectIsSendingComment);
+  const [comment, setComment] = useState('');
+  const [rating, setRating] = useState(MIN_RATING);
 
+  const handleSetRating = (value: string) => {
+    setRating(parseInt(value, 10));
+  };
 
-  const handlerChange = ({target}: ChangeEvent<HTMLTextAreaElement>) => {
-    const value = target.value;
-    setUserAdd(()=> ({
-      ...userAdd,
-      reviewText: value,
-    }));
+  const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+    dispatch(sendCommentAction({filmId, comment, rating}));
   };
 
   return (
-    <form className="add-review__form">
-      <div className="rating">
-        <div className="rating__stars">
-          {ratings.map((rating) => (
-            <>
-              <input className="rating__input" id={`star-${rating}`} type="radio" name="rating" value={rating} />
-              <label className="rating__label" htmlFor={`star-${rating}`}>{`Rating ${rating}`}</label>
-            </>
-          ))}
-        </div>
-      </div>
+    <div className="add-review">
+      <form action="#" className="add-review__form" onSubmit={handleSubmit}>
+        <RatingSelect isSending={isSending} onChangeRating={handleSetRating}/>
 
-      <div className="add-review__text">
-        <textarea
-          className="add-review__textarea"
-          name="review-text"
-          id="review-text"
-          placeholder="Review text"
-          onChange={handlerChange}
-          value={userAdd.reviewText}
-        >
-        </textarea>
-        <div className="add-review__submit">
-          <button className="add-review__btn" type="submit">Post</button>
+        <div className="add-review__text">
+          <textarea
+            value={comment}
+            className="add-review__textarea"
+            name="review-text"
+            id="review-text"
+            onChange={(evt) => setComment(evt.target.value)}
+            placeholder="Review text"
+            disabled={isSending}
+          />
+          <div className="add-review__submit">
+            <button
+              className="add-review__btn"
+              disabled={isSending}
+            >
+              Post
+            </button>
+          </div>
         </div>
-
-      </div>
-    </form>
+      </form>
+    </div>
   );
 }
-
 export default AddReviewForm;

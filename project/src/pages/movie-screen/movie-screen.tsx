@@ -12,8 +12,6 @@ function MovieScreen(): JSX.Element {
   const { id } = useParams();
   const film = films.find((movie) => String(movie.id) === id);
 
-  const similarFilms = films.filter((element) => element?.genre === film?.genre);
-
   if (!film) {
     return <Navigate to={AppRoute.NotFound} />;
   }
@@ -100,7 +98,7 @@ function MovieScreen(): JSX.Element {
       </section>
 
       <div className="page-content">
-        <SimilarFilms similarFilms={similarFilms} />
+        <SimilarFilms />
 
         <footer className="page-footer">
           <div className="logo">

@@ -1,13 +1,11 @@
-import { FilmType } from '../../types/films';
+import { useAppSelector } from '../../hooks';
+import { selectPromoFilm } from '../../store/promo-slice/select';
 import Header from '../header/header';
 import Poster from '../poster/poster';
 
-type PromoFilmProps = {
-  promoFilm: FilmType,
-}
+function PromoFilm() {
 
-function PromoFilm({promoFilm}: PromoFilmProps) {
-
+  const promoFilm = useAppSelector(selectPromoFilm);
   const {name, backgroundImage} = promoFilm;
 
   return (
