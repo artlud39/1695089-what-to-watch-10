@@ -1,15 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { FilmType } from '../../types/films';
 import { SliceName } from '../../const';
+import { PromoState } from '../../types/state';
 import { fetchPromoFilmAction } from '../api-actions';
 
-type PromoState = {
-  promoFilm: FilmType;
-  isLoaded: boolean;
-}
-
 const initialState: PromoState = {
-  promoFilm: {} as FilmType,
+  promoFilm: {
+    id: 0,
+    name: '',
+    posterImage: '',
+    previewImage: '',
+    backgroundImage: '',
+    backgroundColor: '',
+    videoLink: '',
+    previewVideoLink: '',
+    description: '',
+    rating: 0,
+    scoresCount: 0,
+    director: '',
+    starring: [],
+    runTime: 0,
+    genre: '',
+    released: 0,
+    isFavorite: false,
+  },
   isLoaded: false,
 };
 

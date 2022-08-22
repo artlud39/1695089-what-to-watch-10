@@ -1,6 +1,6 @@
 function LoadingScreen(): JSX.Element {
   return (
-    <body>
+    <>
       <section className="film-card">
         <div className="film-card__bg">
           <img src="img/bg-header.jpg" alt="Some background" />
@@ -18,7 +18,7 @@ function LoadingScreen(): JSX.Element {
       <div>
         <p>Loading... Please wait.</p>
       </div>
-    </body>
+    </>
   );
 }
 

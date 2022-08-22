@@ -1,8 +1,8 @@
 import { selectComments } from '../../store/comments-slice/select';
 import Review from '../review/review';
-import {useAppSelector} from '../../hooks/index';
+import { useAppSelector } from '../../hooks/index';
 
-function Reviews() {
+function Reviews(): JSX.Element {
 
   const comments = useAppSelector(selectComments);
 

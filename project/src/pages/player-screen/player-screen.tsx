@@ -1,13 +1,13 @@
-import { Navigate, useParams } from 'react-router-dom';
+import { Link, Navigate} from 'react-router-dom';
 import { useAppSelector } from '../../hooks';
 import { AppRoute } from '../../const';
-import { selectFilterFilms } from '../../store/films-slice/select';
+import { selectFilm } from '../../store/film-slice/select';
 
 
 function PlayerScreen(): JSX.Element {
-  const films = useAppSelector(selectFilterFilms);
-  const {id} = useParams();
-  const film = films.find((movie) => String(movie.id) === id);
+  const film = useAppSelector(selectFilm);
+  const {id, previewImage} = film;
+
 
   if (!film) {
     return <Navigate to={AppRoute.NotFound} />;
@@ -15,9 +15,9 @@ function PlayerScreen(): JSX.Element {
 
   return (
     <div className="player">
-      <video src={film.videoLink} className="player__video" poster="img/player-poster.jpg"></video>
+      <video src="#" className="player__video" poster={previewImage}></video>
 
-      <button type="button" className="player__exit">Exit</button>
+      <Link to={`/${AppRoute.Movie}/${id}`} className="player__exit">Exit</Link>
 
       <div className="player__controls">
         <div className="player__controls-row">

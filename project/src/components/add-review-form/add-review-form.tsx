@@ -9,9 +9,10 @@ const MIN_RATING = 0;
 
 type CommentFormType = {
   filmId: number;
+  backgroundColor: string;
 }
 
-function AddReviewForm({filmId}: CommentFormType): JSX.Element {
+function AddReviewForm({filmId, backgroundColor}: CommentFormType): JSX.Element {
   const dispatch = useAppDispatch();
   const isSending = useAppSelector(selectIsSendingComment);
   const [comment, setComment] = useState('');
@@ -26,12 +27,17 @@ function AddReviewForm({filmId}: CommentFormType): JSX.Element {
     dispatch(sendCommentAction({filmId, comment, rating}));
   };
 
+  const filmFormStyle = {
+    backgroundColor: backgroundColor,
+    background: 'rgba(255, 255, 255, 0.2)',
+  };
+
   return (
     <div className="add-review">
       <form action="#" className="add-review__form" onSubmit={handleSubmit}>
         <RatingSelect isSending={isSending} onChangeRating={handleSetRating}/>
 
-        <div className="add-review__text">
+        <div className="add-review__text" style={filmFormStyle}>
           <textarea
             value={comment}
             className="add-review__textarea"

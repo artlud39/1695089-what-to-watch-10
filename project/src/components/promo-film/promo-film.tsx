@@ -1,6 +1,7 @@
 import { useAppSelector } from '../../hooks';
 import { selectPromoFilm } from '../../store/promo-slice/select';
 import Header from '../header/header';
+import PosterInfo from '../poster-info/poster-info';
 import Poster from '../poster/poster';
 
 function PromoFilm() {
@@ -20,7 +21,8 @@ function PromoFilm() {
 
       <div className="film-card__wrap">
         <div className="film-card__info">
-          <Poster promoFilm={promoFilm}/>
+          <Poster film={promoFilm}/>
+          <PosterInfo film={promoFilm}/>
         </div>
       </div>
     </section>
