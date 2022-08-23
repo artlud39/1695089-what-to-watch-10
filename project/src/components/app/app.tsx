@@ -10,15 +10,18 @@ import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import PrivateRoute from '../../components/private-route/private-route';
 import { useAppSelector } from '../../hooks';
 import LoadingScreen from '../../pages/loading-screen/loading-screen';
-import { selectAuthStatus } from '../../store/select';
 import HistoryRouter from '../history-route/history-route';
 import browserHistory from '../../utils/browser-history';
+import { selectAuthStatus } from '../../store/auth-slice/select';
+import { selectIsLoadedPromo } from '../../store/promo-slice/select';
+import { selectIsLoadedFilms } from '../../store/films-slice/select';
 
 function App(): JSX.Element {
-  const { isDataLoaded } = useAppSelector((state) => state);
+  const isFilmsLoaded = useAppSelector(selectIsLoadedFilms);
+  const isPromoLoaded = useAppSelector(selectIsLoadedPromo);
   const authStatus = useAppSelector(selectAuthStatus);
 
-  if (authStatus === AuthorizationStatus.Unknown || isDataLoaded) {
+  if (authStatus === AuthorizationStatus.Unknown || isFilmsLoaded || isPromoLoaded) {
     return <LoadingScreen />;
   }
 

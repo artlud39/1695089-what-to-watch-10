@@ -3,10 +3,11 @@ import AddReviewForm from '../../components/add-review-form/add-review-form';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { useAppSelector } from '../../hooks';
 import { AppRoute } from '../../const';
+import { selectFilterFilms } from '../../store/films-slice/select';
 
 function AddReviewScreen(): JSX.Element {
   const { id } = useParams();
-  const films = useAppSelector((state) => state.films);
+  const films = useAppSelector(selectFilterFilms);
   const film = films.find((movie) => String(movie.id) === id);
 
   if (!film) {
