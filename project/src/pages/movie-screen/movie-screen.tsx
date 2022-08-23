@@ -28,7 +28,7 @@ function MovieScreen(): JSX.Element {
   } = film;
 
   const filmCardStyle = {
-    backgroundColor: backgroundColor,
+    backgroundColor,
   };
 
   return (
