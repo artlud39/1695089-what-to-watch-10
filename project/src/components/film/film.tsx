@@ -9,6 +9,9 @@ interface FilmProps {
   isFilmActive: boolean
 }
 
+const getFilmUrl = (id: string | number): string =>
+  `/film/${id}`;
+
 function Film({film, setFilmActive, isFilmActive}: FilmProps): JSX.Element {
 
   const handleMouseEnter = () => {
@@ -31,7 +34,7 @@ function Film({film, setFilmActive, isFilmActive}: FilmProps): JSX.Element {
           : <img src={film.previewImage} alt={film.name} width="280" height="175" />}
       </div>
       <h3 className="small-film-card__title">
-        <Link className="small-film-card__link" to={generatePath(AppRoute.Movie, {id: String(film.id)})}>{film.name}</Link>
+        <Link className="small-film-card__link" to={getFilmUrl(film.id)}>{film.name}</Link>
       </h3>
     </article>
   );

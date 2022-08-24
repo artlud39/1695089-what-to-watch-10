@@ -83,7 +83,7 @@ export const fetchSimilarFilmsAction = createAsyncThunk<FilmsType, string, {
 }>(
   'film/fetchSimilarFilms',
   async (id: string, {extra: api}) => {
-    const {data} = await api.get<FilmType[]>(`${APIRoute.Films}/${id}/similar`);
+    const {data} = await api.get<FilmsType>(`${APIRoute.Films}/${id}/similar`);
     return data;
   }
 );
@@ -105,7 +105,7 @@ export const sendCommentAction = createAsyncThunk<CommentsType, NewCommentType, 
   'film/sendComment',
   async ({filmId, comment, rating}, {dispatch, extra: api}) => {
     const {data} = await api.post<CommentsType>(`${APIRoute.Comments}/${filmId}`, {comment, rating});
-    dispatch(redirectToRoute(`${AppRoute.Movie}/${filmId}?tab=${Tab.Reviews}`));
+    dispatch(redirectToRoute(`${AppRoute.Film}/${filmId}?tab=${Tab.Reviews}`));
     return data;
   }
 );

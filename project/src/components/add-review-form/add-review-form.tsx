@@ -7,12 +7,12 @@ import { selectIsSendingComment } from '../../store/comments-slice/select';
 
 const MIN_RATING = 0;
 
-type CommentFormType = {
+type AddReviewFormProps = {
   filmId: number;
   backgroundColor: string;
 }
 
-function AddReviewForm({filmId, backgroundColor}: CommentFormType): JSX.Element {
+function AddReviewForm({filmId, backgroundColor}: AddReviewFormProps): JSX.Element {
   const dispatch = useAppDispatch();
   const isSending = useAppSelector(selectIsSendingComment);
   const [comment, setComment] = useState('');

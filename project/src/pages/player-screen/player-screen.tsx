@@ -3,7 +3,6 @@ import { useAppSelector } from '../../hooks';
 import { AppRoute } from '../../const';
 import { selectFilm } from '../../store/film-slice/select';
 
-
 function PlayerScreen(): JSX.Element {
   const film = useAppSelector(selectFilm);
   const {id, previewImage} = film;
@@ -17,7 +16,7 @@ function PlayerScreen(): JSX.Element {
     <div className="player">
       <video src="#" className="player__video" poster={previewImage}></video>
 
-      <Link to={`/${AppRoute.Movie}/${id}`} className="player__exit">Exit</Link>
+      <Link to={`/film/${id}`} className="player__exit">Exit</Link>
 
       <div className="player__controls">
         <div className="player__controls-row">

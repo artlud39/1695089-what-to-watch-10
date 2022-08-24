@@ -48,7 +48,7 @@ function PosterInfo({film}: PosterInfoProps): JSX.Element {
         {
           isAuthStatus === AuthorizationStatus.Auth &&
           <Link
-            to={`/movie/${id}/review`}
+            to={`/film/${id}/review`}
             className="btn film-card__button"
           >
             Add review

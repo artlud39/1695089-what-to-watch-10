@@ -45,7 +45,7 @@ function App(): JSX.Element {
           }
         />
         <Route
-          path={AppRoute.Movie}
+          path={AppRoute.Film}
           element={
             <MovieScreen />
           }
