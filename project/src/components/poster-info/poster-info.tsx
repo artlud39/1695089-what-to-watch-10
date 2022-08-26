@@ -1,14 +1,13 @@
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/index';
 import { selectAuthStatus } from '../../store/auth-slice/select';
-import { AppRouteName, AuthorizationStatus } from '../../const';
+import { AuthorizationStatus } from '../../const';
 import { FilmType } from '../../types/films';
+import { getAddReviewUrl, getPlayerUrl } from '../../utils/route';
 
 type PosterInfoProps = {
   film: FilmType
 }
-const getPlayerUrl = (id: string | number): string => `/${AppRouteName.Player}/${id}`;
-const getAddReviewUrl = (id: string | number): string =>`/${AppRouteName.Film}/${id}/review`;
 
 function PosterInfo({film}: PosterInfoProps): JSX.Element {
   const {id, name, genre, released} = film;

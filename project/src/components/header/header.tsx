@@ -4,6 +4,7 @@ import { AppRoute, AuthorizationStatus } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { logoutAction } from '../../store/api-actions';
 import { selectAuthStatus, selectAvatar } from '../../store/auth-slice/select';
+import { getMylistUrl, getSignIntUrl } from '../../utils/route';
 
 
 function Header(): JSX.Element {
@@ -35,7 +36,7 @@ function Header(): JSX.Element {
                 <>
                   <li className="user-block__item">
                     <Link
-                      to={AppRoute.MyList}
+                      to={getMylistUrl()}
                       className="user-block__avatar"
                     >
                       <img src={avatarUrl} alt="User avatar" width="63" height="63"/>
@@ -54,7 +55,7 @@ function Header(): JSX.Element {
               )
               : (
                 <li className="user-block__item">
-                  <Link to={AppRoute.SingIn} className="user-block__link">Sign in</Link>
+                  <Link to={getSignIntUrl()} className="user-block__link">Sign in</Link>
                 </li>
               )
           }

@@ -35,7 +35,7 @@ function AddReviewScreen(): JSX.Element {
         </div>
       </div>
 
-      <div className="add-review" >
+      <div className="add-review">
         <AddReviewForm filmId={Number(id)}/>
       </div>
 

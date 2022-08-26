@@ -1,15 +1,13 @@
 import { Link } from 'react-router-dom';
 import VideoPlayer from '../video-player/video-player';
 import { FilmType } from '../../types/films';
-import { AppRouteName } from '../../const';
+import { getFilmUrl } from '../../utils/route';
 
 interface FilmProps {
   film: FilmType,
   setFilmActive: React.Dispatch<React.SetStateAction<number | null>>,
   isFilmActive: boolean
 }
-
-const getFilmUrl = (id: string | number): string => `/${AppRouteName.Film}/${id}`;
 
 function Film({film, setFilmActive, isFilmActive}: FilmProps): JSX.Element {
 
