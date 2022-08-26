@@ -36,7 +36,7 @@ function AddReviewScreen(): JSX.Element {
       </div>
 
       <div className="add-review" >
-        <AddReviewForm filmId={Number(id)} backgroundColor={backgroundColor}/>
+        <AddReviewForm filmId={Number(id)}/>
       </div>
 
     </section>

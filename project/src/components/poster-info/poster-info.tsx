@@ -1,16 +1,19 @@
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/index';
 import { selectAuthStatus } from '../../store/auth-slice/select';
-import { AuthorizationStatus } from '../../const';
+import { AppRouteName, AuthorizationStatus } from '../../const';
 import { FilmType } from '../../types/films';
 
 type PosterInfoProps = {
   film: FilmType
 }
+const getPlayerUrl = (id: string | number): string => `/${AppRouteName.Player}/${id}`;
+const getAddReviewUrl = (id: string | number): string =>`/${AppRouteName.Film}/${id}/review`;
 
 function PosterInfo({film}: PosterInfoProps): JSX.Element {
   const {id, name, genre, released} = film;
   const isAuthStatus = useAppSelector(selectAuthStatus);
+
   return (
     <div className="film-card__desc">
       <h2 className="film-card__title">{name}</h2>
@@ -21,7 +24,7 @@ function PosterInfo({film}: PosterInfoProps): JSX.Element {
 
       <div className="film-card__buttons">
         <Link
-          to={`/player/${id}`}
+          to={getPlayerUrl(id)}
           className="btn btn--play film-card__button"
           type="button"
         >
@@ -48,7 +51,7 @@ function PosterInfo({film}: PosterInfoProps): JSX.Element {
         {
           isAuthStatus === AuthorizationStatus.Auth &&
           <Link
-            to={`/film/${id}/review`}
+            to={getAddReviewUrl(id)}
             className="btn film-card__button"
           >
             Add review

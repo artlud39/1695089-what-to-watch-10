@@ -12,7 +12,7 @@ function FilmFullInfo(): JSX.Element {
   const { backgroundImage, backgroundColor } = film;
 
   const filmCardStyle = {
-    backgroundColor: backgroundColor,
+    backgroundColor,
   };
 
   return (

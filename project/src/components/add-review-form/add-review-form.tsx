@@ -9,10 +9,9 @@ const MIN_RATING = 0;
 
 type AddReviewFormProps = {
   filmId: number;
-  backgroundColor: string;
 }
 
-function AddReviewForm({filmId, backgroundColor}: AddReviewFormProps): JSX.Element {
+function AddReviewForm({filmId}: AddReviewFormProps): JSX.Element {
   const dispatch = useAppDispatch();
   const isSending = useAppSelector(selectIsSendingComment);
   const [comment, setComment] = useState('');
@@ -28,7 +27,6 @@ function AddReviewForm({filmId, backgroundColor}: AddReviewFormProps): JSX.Eleme
   };
 
   const filmFormStyle = {
-    backgroundColor: backgroundColor,
     background: 'rgba(255, 255, 255, 0.2)',
   };
 
@@ -51,6 +49,7 @@ function AddReviewForm({filmId, backgroundColor}: AddReviewFormProps): JSX.Eleme
             <button
               className="add-review__btn"
               disabled={isSending}
+              type="submit"
             >
               Post
             </button>

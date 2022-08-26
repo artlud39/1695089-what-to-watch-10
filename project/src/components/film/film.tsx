@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import VideoPlayer from '../video-player/video-player';
 import { FilmType } from '../../types/films';
+import { AppRouteName } from '../../const';
 
 interface FilmProps {
   film: FilmType,
@@ -8,8 +9,7 @@ interface FilmProps {
   isFilmActive: boolean
 }
 
-const getFilmUrl = (id: string | number): string =>
-  `/film/${id}`;
+const getFilmUrl = (id: string | number): string => `/${AppRouteName.Film}/${id}`;
 
 function Film({film, setFilmActive, isFilmActive}: FilmProps): JSX.Element {
 

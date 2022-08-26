@@ -8,6 +8,11 @@ export enum AppRoute {
   NotFound = '*',
 }
 
+export enum AppRouteName {
+  Film = 'film',
+  Player = 'player',
+}
+
 export enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
