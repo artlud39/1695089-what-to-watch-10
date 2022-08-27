@@ -1,20 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { FilmsType} from '../../types/films';
 import { DEFAULT_GENRE, SliceName } from '../../const';
-import { fetchFilmsAction } from '../api-actions';
-
-type FilmsState = {
-  similarFilms: FilmsType;
-  genre: string;
-  films: FilmsType;
-  isLoaded: boolean;
-}
+import { addToFavoriteAction, fetchFilmsAction } from '../api-actions';
+import { FilmsState } from '../../types/state';
 
 const initialState: FilmsState = {
-  similarFilms: [],
   genre: DEFAULT_GENRE,
   films: [],
   isLoaded: false,
+  isLoadError: false,
 };
 
 export const filmsSlice = createSlice({
@@ -29,10 +22,22 @@ export const filmsSlice = createSlice({
     builder
       .addCase(fetchFilmsAction.pending, (state) => {
         state.isLoaded = true;
+        state.isLoadError = false;
       })
       .addCase(fetchFilmsAction.fulfilled, (state, action) => {
         state.films = action.payload;
         state.isLoaded = false;
+        state.isLoadError = false;
+      })
+
+      .addCase(fetchFilmsAction.rejected, (state) => {
+        state.isLoaded = false;
+        state.isLoadError = true;
+      })
+
+      .addCase(addToFavoriteAction.fulfilled, (state, action) => {
+        const index = state.films.findIndex((item) => item.id === action.payload.id);
+        state.films[index].isFavorite = action.payload.isFavorite;
       });
   },
 });

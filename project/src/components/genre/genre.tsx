@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 type GenreProps = {
@@ -16,7 +17,7 @@ const GenreItem = ({genre, activeGenre, onGenreClick}: GenreProps) => {
 
   return (
     <li className={`catalog__genres-item ${activeGenre === genre ? 'catalog__genres-item--active' : ''}`}>
-      <a href={`/${genre}`} className="catalog__genres-link" onClick={handleGenreClick}>{genre}</a>
+      <Link to={`/${genre}`} className="catalog__genres-link" onClick={handleGenreClick}>{genre}</Link>
     </li>
   );
 };

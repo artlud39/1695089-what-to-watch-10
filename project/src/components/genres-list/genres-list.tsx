@@ -1,4 +1,4 @@
-import { useAppSelector, useAppDispatch } from '../../hooks';
+import { useAppSelector, useAppDispatch } from '../../hooks/index';
 import { selectActiveGenre, selectGenres } from '../../store/films-slice/select';
 import { changeGenre } from '../../store/films-slice/films-slice';
 

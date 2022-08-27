@@ -1,4 +1,5 @@
 import { FilmType } from '../../types/films';
+import { getRatingName } from '../../utils/common';
 
 
 type OverviewProps = {
@@ -16,12 +17,14 @@ function Overview({film}: OverviewProps) {
 
   } = film;
 
+  const ratingName = getRatingName(rating);
+
   return (
     <>
       <div className="film-rating">
         <div className="film-rating__score">{rating}</div>
         <p className="film-rating__meta">
-          <span className="film-rating__level">Very good</span>
+          <span className="film-rating__level">{ratingName}</span>
           <span className="film-rating__count">{scoresCount} ratings</span>
         </p>
       </div>

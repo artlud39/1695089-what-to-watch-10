@@ -10,5 +10,3 @@ export const getAddReviewUrl = (id: string | number): string =>`/${AppRoute.Film
 export const getMylistUrl = (): string => `/${AppRoute.MyList}/`;
 
 export const getSignIntUrl = (): string => `/${AppRoute.SingIn}/`;
-
-

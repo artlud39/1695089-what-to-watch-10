@@ -4,6 +4,7 @@ import { useAppDispatch } from '../../hooks/index';
 import { sendCommentAction } from '../../store/api-actions';
 import { useAppSelector } from '../../hooks/index';
 import { selectIsSendingComment } from '../../store/comments-slice/select';
+import { useValidComment } from '../../hooks/use-valid-comment';
 
 const MIN_RATING = 0;
 
@@ -16,6 +17,7 @@ function AddReviewForm({filmId}: AddReviewFormProps): JSX.Element {
   const isSending = useAppSelector(selectIsSendingComment);
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState(MIN_RATING);
+  const isValidForm = useValidComment(comment, rating);
 
   const handleSetRating = (value: string) => {
     setRating(parseInt(value, 10));
@@ -48,8 +50,8 @@ function AddReviewForm({filmId}: AddReviewFormProps): JSX.Element {
           <div className="add-review__submit">
             <button
               className="add-review__btn"
-              disabled={isSending}
-              type="submit"
+              disabled={isSending || !isValidForm}
+
             >
               Post
             </button>

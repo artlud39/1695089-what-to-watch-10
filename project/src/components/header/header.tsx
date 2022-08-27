@@ -1,13 +1,18 @@
-import { FormEvent } from 'react';
+import classNames from 'classnames';
+import { FormEvent, PropsWithChildren } from 'react';
 import { Link, useMatch } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/index';
 import { logoutAction } from '../../store/api-actions';
 import { selectAuthStatus, selectAvatar } from '../../store/auth-slice/select';
 import { getMylistUrl, getSignIntUrl } from '../../utils/route';
+import Logo from '../logo/logo';
 
+type HeaderProps = PropsWithChildren<{
+  className?: string;
+}>
 
-function Header(): JSX.Element {
+function Header({className, children}: HeaderProps): JSX.Element {
   const isLoginPath = useMatch(AppRoute.SingIn);
   const authStatus = useAppSelector(selectAuthStatus);
   const dispatch = useAppDispatch();
@@ -19,14 +24,12 @@ function Header(): JSX.Element {
   };
 
   return (
-    <header className='page-header film-card__head'>
-      <div className="logo">
-        <Link to={AppRoute.Main} className="logo__link">
-          <span className="logo__letter logo__letter--1">W</span>
-          <span className="logo__letter logo__letter--2">T</span>
-          <span className="logo__letter logo__letter--3">W</span>
-        </Link>
-      </div>
+    <header className={classNames('page-header', className)}>
+
+      <Logo/>
+
+      {children}
+
       {
         !isLoginPath &&
         <ul className="user-block">

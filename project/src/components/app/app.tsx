@@ -9,20 +9,27 @@ import SingInScreen from '../../pages/sing-in-screen/sing-in-screen';
 import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import PrivateRoute from '../../components/private-route/private-route';
 import { useAppSelector } from '../../hooks';
-import LoadingScreen from '../../pages/loading-screen/loading-screen';
 import HistoryRouter from '../history-route/history-route';
 import browserHistory from '../../utils/browser-history';
 import { selectAuthStatus } from '../../store/auth-slice/select';
-import { selectIsLoadedPromo } from '../../store/promo-slice/select';
-import { selectIsLoadedFilms } from '../../store/films-slice/select';
+import { selectIsLoadedPromo, selectIsPromoError } from '../../store/promo-slice/select';
+import { selectIsLoadedError, selectIsLoadedFilms } from '../../store/films-slice/select';
+import ServerErrorMessage from '../server-error-message/server-error-message';
+import Loader from '../loader/loader';
 
 function App(): JSX.Element {
   const isFilmsLoad = useAppSelector(selectIsLoadedFilms);
+  const isErrorLoadFilms = useAppSelector(selectIsLoadedError);
   const isPromoLoad = useAppSelector(selectIsLoadedPromo);
+  const isErrorLoadPromo = useAppSelector(selectIsPromoError);
   const authStatus = useAppSelector(selectAuthStatus);
 
   if (authStatus === AuthorizationStatus.Unknown || isFilmsLoad || isPromoLoad) {
-    return <LoadingScreen />;
+    return <Loader />;
+  }
+
+  if (isErrorLoadFilms || isErrorLoadPromo) {
+    return <ServerErrorMessage/>;
   }
 
   return (
