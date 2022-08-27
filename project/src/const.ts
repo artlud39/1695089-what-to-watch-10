@@ -70,3 +70,5 @@ export const TIMEOUT_SHOW_ERROR = 5000;
 export const DEFAULT_GENRE = 'All Genres';
 
 export const DEFAULT_RATING = 0;
+
+export const QUERY_PARAM_NAME = 'tab';

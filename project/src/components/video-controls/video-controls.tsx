@@ -5,8 +5,7 @@ type VideoControlsProps = {
   onToggleFullscreen: () => void,
 }
 
-function VideoControls(props: VideoControlsProps): JSX.Element {
-  const {title, isPlaying, onTogglePlay, onToggleFullscreen} = props;
+function VideoControls({title, isPlaying, onTogglePlay, onToggleFullscreen}: VideoControlsProps): JSX.Element {
 
   return (
     <div className="player__controls-row">

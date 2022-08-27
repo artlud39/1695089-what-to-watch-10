@@ -361,7 +361,7 @@ main {
   margin: 0 auto; }
 
 .add-review__text {
-  background: #E8C3C4;
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 8px; }
 
 .add-review__textarea {

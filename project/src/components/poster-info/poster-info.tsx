@@ -21,7 +21,7 @@ function PosterInfo({film}: PosterInfoProps): JSX.Element {
 
 
   const handleAddToFavorite = () => {
-    const status = +!isFavorite;
+    const status = Number(!isFavorite);
     dispatch(addToFavoriteAction({id, status}));
   };
 
@@ -42,7 +42,7 @@ function PosterInfo({film}: PosterInfoProps): JSX.Element {
         <Link
           to={getPlayerUrl(id)}
           className="btn btn--play film-card__button"
-          type="button"
+          role='play'
           onClick={handlePlayFilm}
         >
           <svg viewBox="0 0 19 19" width="19" height="19">
@@ -59,7 +59,7 @@ function PosterInfo({film}: PosterInfoProps): JSX.Element {
             onClick={handleAddToFavorite}
           >
             {
-              isFavorite === true ?
+              isFavorite ?
                 <svg viewBox="0 0 18 14" width="18" height="14">
                   <use xlinkHref="#in-list"></use>
                 </svg>

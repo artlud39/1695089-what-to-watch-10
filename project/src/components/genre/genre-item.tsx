@@ -1,14 +1,15 @@
+import classNames from 'classnames';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-type GenreProps = {
+type GenreItemProps = {
   genre: string;
   activeGenre: string;
   onGenreClick: (genre: string) => void;
 }
 
-const GenreItem = ({genre, activeGenre, onGenreClick}: GenreProps) => {
+const GenreItem = ({genre, activeGenre, onGenreClick}: GenreItemProps) => {
 
   const handleGenreClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -16,7 +17,7 @@ const GenreItem = ({genre, activeGenre, onGenreClick}: GenreProps) => {
   };
 
   return (
-    <li className={`catalog__genres-item ${activeGenre === genre ? 'catalog__genres-item--active' : ''}`}>
+    <li className={classNames('catalog__genres-item', {'catalog__genres-item--active': activeGenre === genre})}>
       <Link to={`/${genre}`} className="catalog__genres-link" onClick={handleGenreClick}>{genre}</Link>
     </li>
   );

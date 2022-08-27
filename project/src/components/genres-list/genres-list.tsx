@@ -2,7 +2,7 @@ import { useAppSelector, useAppDispatch } from '../../hooks/index';
 import { selectActiveGenre, selectGenres } from '../../store/films-slice/select';
 import { changeGenre } from '../../store/films-slice/films-slice';
 
-import GenreItem from '../genre/genre';
+import GenreItem from '../genre/genre-item';
 
 function GenresList(): JSX.Element {
 
@@ -11,7 +11,7 @@ function GenresList(): JSX.Element {
 
   const dispatch = useAppDispatch();
 
-  const handleChangeGenre = (genre: string) => {
+  const handleChangeGenre = (genre: string): void => {
     dispatch(changeGenre(genre));
   };
 

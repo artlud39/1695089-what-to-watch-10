@@ -4,7 +4,7 @@ import Header from '../header/header';
 import PosterInfo from '../poster-info/poster-info';
 import Poster from '../poster/poster';
 
-function PromoFilm() {
+function PromoFilm(): JSX.Element {
 
   const promoFilm = useAppSelector(selectPromoFilm);
   const {name, backgroundImage} = promoFilm;

@@ -28,16 +28,12 @@ function AddReviewForm({filmId}: AddReviewFormProps): JSX.Element {
     dispatch(sendCommentAction({filmId, comment, rating}));
   };
 
-  const filmFormStyle = {
-    background: 'rgba(255, 255, 255, 0.2)',
-  };
-
   return (
     <div className="add-review">
       <form action="#" className="add-review__form" onSubmit={handleSubmit}>
         <RatingSelect isSending={isSending} onChangeRating={handleSetRating}/>
 
-        <div className="add-review__text" style={filmFormStyle}>
+        <div className="add-review__text">
           <textarea
             value={comment}
             className="add-review__textarea"
@@ -51,7 +47,7 @@ function AddReviewForm({filmId}: AddReviewFormProps): JSX.Element {
             <button
               className="add-review__btn"
               disabled={isSending || !isValidForm}
-
+              type="submit"
             >
               Post
             </button>

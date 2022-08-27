@@ -24,9 +24,11 @@ function SingInScreen(): JSX.Element {
     evt.preventDefault();
     const formError = validatorFormSignIn(email, password);
 
-    (error)
-      ? dispatch(setError(formError))
-      : dispatch(loginAction({login: email, password}));
+    if (error){
+      dispatch(setError(formError));
+    } else {
+      dispatch(loginAction({login: email, password}));
+    }
   };
 
   if (authStatus === AuthorizationStatus.Auth) {

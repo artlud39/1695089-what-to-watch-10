@@ -11,12 +11,8 @@ function FilmFullInfo(): JSX.Element {
 
   const { backgroundImage, backgroundColor } = film;
 
-  const filmCardStyle = {
-    backgroundColor,
-  };
-
   return (
-    <section className="film-card film-card--full" style={filmCardStyle}>
+    <section className="film-card film-card--full" style={{backgroundColor}}>
       <div className="film-card__hero">
         <div className="film-card__bg">
           <img src={backgroundImage} alt="The Grand Budapest Hotel"/>

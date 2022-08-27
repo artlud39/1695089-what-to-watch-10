@@ -1,7 +1,5 @@
 import { useSearchParams } from 'react-router-dom';
-import { Tab } from '../const';
-
-const QUERY_PARAM_NAME = 'tab';
+import { QUERY_PARAM_NAME, Tab } from '../const';
 
 export const useFilmTab = () => {
   const [searchParams] = useSearchParams();

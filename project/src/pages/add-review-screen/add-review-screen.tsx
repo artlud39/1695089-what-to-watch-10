@@ -29,12 +29,8 @@ function AddReviewScreen(): JSX.Element {
     return <ServerErrorMessage/>;
   }
 
-  const filmCardStyle = {
-    backgroundColor,
-  };
-
   return (
-    <section className="film-card film-card--full" style={filmCardStyle}>
+    <section className="film-card film-card--full" style={{backgroundColor}}>
       <div className="film-card__header">
         <div className="film-card__bg">
           <img src={backgroundImage} alt={name} />
