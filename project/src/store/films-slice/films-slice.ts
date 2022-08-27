@@ -1,15 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { FilmType } from '../../types/films';
+import { FilmsType} from '../../types/films';
 import { DEFAULT_GENRE, SliceName } from '../../const';
 import { fetchFilmsAction } from '../api-actions';
 
 type FilmsState = {
+  similarFilms: FilmsType;
   genre: string;
-  films: FilmType[];
+  films: FilmsType;
   isLoaded: boolean;
 }
 
 const initialState: FilmsState = {
+  similarFilms: [],
   genre: DEFAULT_GENRE,
   films: [],
   isLoaded: false,

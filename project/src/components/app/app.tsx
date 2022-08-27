@@ -17,11 +17,11 @@ import { selectIsLoadedPromo } from '../../store/promo-slice/select';
 import { selectIsLoadedFilms } from '../../store/films-slice/select';
 
 function App(): JSX.Element {
-  const isFilmsLoaded = useAppSelector(selectIsLoadedFilms);
-  const isPromoLoaded = useAppSelector(selectIsLoadedPromo);
+  const isFilmsLoad = useAppSelector(selectIsLoadedFilms);
+  const isPromoLoad = useAppSelector(selectIsLoadedPromo);
   const authStatus = useAppSelector(selectAuthStatus);
 
-  if (authStatus === AuthorizationStatus.Unknown || isFilmsLoaded || isPromoLoaded) {
+  if (authStatus === AuthorizationStatus.Unknown || isFilmsLoad || isPromoLoad) {
     return <LoadingScreen />;
   }
 
@@ -45,7 +45,7 @@ function App(): JSX.Element {
           }
         />
         <Route
-          path={AppRoute.Movie}
+          path={AppRoute.Film}
           element={
             <MovieScreen />
           }

@@ -1,5 +1,4 @@
-import { CommentType } from '../../types/films';
-
+import { CommentType } from '../../types/comments';
 
 type DetailsProps = {
   review: CommentType,

@@ -1,17 +1,18 @@
-import { FilmsType } from '../../types/films';
 import FilmsList from '../films-list/films-list';
+import { useAppSelector } from '../../hooks/index';
+import { MAX_COUNT_SHOW_SIMILAR_FILMS } from '../../const';
+import { selectSimilarFilms } from '../../store/film-slice/select';
 
-type SimilarFilmsProps = {
-  similarFilms: FilmsType,
-}
-
-function SimilarFilms({similarFilms}: SimilarFilmsProps): JSX.Element {
+function SimilarFilms(): JSX.Element {
+  const similarFilms = useAppSelector(selectSimilarFilms)
+    .slice(0, MAX_COUNT_SHOW_SIMILAR_FILMS);
 
   return (
-    <div className="catalog catalog--like-this">
+    <section className="catalog catalog--like-this">
       <h2 className="catalog__title">More like this</h2>
-      {similarFilms.length > 0 ? <FilmsList films={similarFilms} /> : <p>Sorry, we did not find anything.</p>}
-    </div>
+
+      <FilmsList films={similarFilms}/>
+    </section>
   );
 }
 

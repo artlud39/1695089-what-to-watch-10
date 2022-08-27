@@ -3,13 +3,15 @@ import { Link, useMatch } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { logoutAction } from '../../store/api-actions';
-import { selectAuthStatus } from '../../store/auth-slice/select';
+import { selectAuthStatus, selectAvatar } from '../../store/auth-slice/select';
+import { getMylistUrl, getSignIntUrl } from '../../utils/route';
 
 
 function Header(): JSX.Element {
   const isLoginPath = useMatch(AppRoute.SingIn);
   const authStatus = useAppSelector(selectAuthStatus);
   const dispatch = useAppDispatch();
+  const avatarUrl = useAppSelector(selectAvatar);
 
   const handleLogout = (evt: FormEvent) => {
     evt.preventDefault();
@@ -34,10 +36,10 @@ function Header(): JSX.Element {
                 <>
                   <li className="user-block__item">
                     <Link
-                      to={AppRoute.MyList}
+                      to={getMylistUrl()}
                       className="user-block__avatar"
                     >
-                      <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
+                      <img src={avatarUrl} alt="User avatar" width="63" height="63"/>
                     </Link>
                   </li>
                   <li className="user-block__item">
@@ -53,7 +55,7 @@ function Header(): JSX.Element {
               )
               : (
                 <li className="user-block__item">
-                  <Link to={AppRoute.SingIn} className="user-block__link">Sign in</Link>
+                  <Link to={getSignIntUrl()} className="user-block__link">Sign in</Link>
                 </li>
               )
           }

@@ -20,7 +20,7 @@ function FilmsList({films}: FilmsListType): JSX.Element {
   const onShowMoreBtnClick = () => {
     setShowCount(showCount + SHOW_FILMS_STEP);
   };
-  console.log(films)
+
   const renderFilms = films.slice(0, showCount);
 
   const isShowButton = films.length >= showCount;
