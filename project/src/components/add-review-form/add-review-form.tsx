@@ -1,4 +1,4 @@
-import RatingSelect from '../rating/rating';
+import RatingSelect from '../rating/rating-select';
 import { FormEvent, useState } from 'react';
 import { useAppDispatch } from '../../hooks/index';
 import { sendCommentAction } from '../../store/api-actions';
