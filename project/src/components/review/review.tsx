@@ -1,4 +1,5 @@
 import { CommentType } from '../../types/comments';
+import { humanizeCommentDate } from '../../utils/common';
 
 type DetailsProps = {
   review: CommentType,
@@ -12,6 +13,8 @@ function Review({review}: DetailsProps) {
     user
   } = review;
 
+  const commentDate = humanizeCommentDate(date);
+
   return (
     <div className="review">
       <blockquote className="review__quote">
@@ -19,7 +22,7 @@ function Review({review}: DetailsProps) {
 
         <footer className="review__details">
           <cite className="review__author">{user.name}</cite>
-          <time className="review__date" dateTime={date}>{date}</time>
+          <time className="review__date" dateTime={commentDate}>{commentDate}</time>
         </footer>
       </blockquote>
 

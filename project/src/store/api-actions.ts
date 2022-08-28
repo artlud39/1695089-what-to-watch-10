@@ -103,9 +103,34 @@ export const sendCommentAction = createAsyncThunk<CommentsType, NewCommentType, 
   extra: AxiosInstance,
 }>(
   'film/sendComment',
-  async ({filmId, comment, rating}, {dispatch, extra: api}) => {
-    const {data} = await api.post<CommentsType>(`${APIRoute.Comments}/${filmId}`, {comment, rating});
-    dispatch(redirectToRoute(`${AppRoute.Film}/${filmId}?tab=${Tab.Reviews}`));
+  async ({filmId, comment, rating}, {dispatch, extra: api, rejectWithValue}) => {
+    try {
+      const {data} = await api.post<CommentsType>(`${APIRoute.Comments}/${filmId}`, {comment, rating});
+      dispatch(redirectToRoute(`${APIRoute.Film}/${filmId}?tab=${Tab.Reviews}`));
+      return data;
+    } catch (err) {
+      const error = err as AxiosError<{ error: string }>;
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const fetchFavoritesAction = createAsyncThunk<FilmType[], undefined, {
+  extra: AxiosInstance,
+}>(
+  'favorite/fetchFavorites',
+  async (_args, {extra: api}) => {
+    const {data} = await api.get<FilmType[]>(APIRoute.Favorite);
+    return data;
+  }
+);
+
+export const addToFavoriteAction = createAsyncThunk<FilmType, { id: number, status: number }, {
+  extra: AxiosInstance
+}>(
+  'favorite/addToFavorite',
+  async ({id, status}, {extra: api}) => {
+    const {data} = await api.post<FilmType>(`${APIRoute.Favorite}/${id}/${status}`);
     return data;
   }
 );

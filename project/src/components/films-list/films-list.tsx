@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { FilmsType } from '../../types/films';
 import { SHOW_FILMS_STEP } from '../../const';
 import ShowMoreButton from '../show-more-button/show-more-button';
-import { useAppSelector } from '../../hooks';
+import { useAppSelector } from '../../hooks/index';
 import { selectActiveGenre } from '../../store/films-slice/select';
 
 type FilmsListType = {

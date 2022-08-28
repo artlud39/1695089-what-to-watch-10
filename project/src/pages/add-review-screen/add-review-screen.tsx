@@ -1,29 +1,39 @@
 import AddReviewForm from '../../components/add-review-form/add-review-form';
-import { Navigate, useParams } from 'react-router-dom';
-import { useAppSelector } from '../../hooks';
-import { AppRoute } from '../../const';
-import { selectFilms} from '../../store/films-slice/select';
+import { useParams } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import Header from '../../components/header/header';
+import { selectFilm, selectIsLoadedError, selectIsLoadedFilm } from '../../store/film-slice/select';
+import { useEffect } from 'react';
+import { fetchFilmAction } from '../../store/api-actions';
+import ServerErrorMessage from '../../components/server-error-message/server-error-message';
+import Loader from '../../components/loader/loader';
 
 function AddReviewScreen(): JSX.Element {
   const { id } = useParams();
-  const films = useAppSelector(selectFilms);
-  const film = films.find((movie) => String(movie.id) === id);
+  const dispatch = useAppDispatch();
+  const { backgroundColor, backgroundImage, name, posterImage } = useAppSelector(selectFilm);
+  const isLoading = useAppSelector(selectIsLoadedFilm);
+  const isErrorLoadFilm = useAppSelector(selectIsLoadedError);
 
-  if (!film) {
-    return <Navigate to={AppRoute.NotFound} />;
+  useEffect(() => {
+    if (id) {
+      dispatch(fetchFilmAction(id));
+    }
+  }, [dispatch, id]);
+
+  if (isLoading) {
+    return <Loader/>;
   }
-  const { backgroundColor } = film;
 
-  const filmCardStyle = {
-    backgroundColor: backgroundColor,
-  };
+  if (isErrorLoadFilm) {
+    return <ServerErrorMessage/>;
+  }
 
   return (
-    <section className="film-card film-card--full" style={filmCardStyle}>
+    <section className="film-card film-card--full" style={{backgroundColor}}>
       <div className="film-card__header">
         <div className="film-card__bg">
-          <img src={film.backgroundImage} alt={film.name} />
+          <img src={backgroundImage} alt={name} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -31,11 +41,11 @@ function AddReviewScreen(): JSX.Element {
         <Header/>
 
         <div className="film-card__poster film-card__poster--small">
-          <img src={film.posterImage} alt={film.name} width="218" height="327" />
+          <img src={posterImage} alt={name} width="218" height="327" />
         </div>
       </div>
 
-      <div className="add-review">
+      <div className="add-review" >
         <AddReviewForm filmId={Number(id)}/>
       </div>
 
