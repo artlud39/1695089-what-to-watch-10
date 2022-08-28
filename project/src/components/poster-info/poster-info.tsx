@@ -6,7 +6,7 @@ import { FilmType } from '../../types/films';
 import { selectFavoritesCount } from '../../store/films-slice/select';
 import { addToFavoriteAction } from '../../store/api-actions';
 import { setPlayType } from '../../store/player-slice/player-slice';
-import { getAddReviewUrl, getPlayerUrl } from '../../utils/route';
+import { getAddReviewUrl, getPlayerUrl, getSignIntUrl } from '../../utils/route';
 
 type PosterInfoProps = {
   film: FilmType
@@ -50,38 +50,58 @@ function PosterInfo({film}: PosterInfoProps): JSX.Element {
           </svg>
           <span>Play</span>
         </Link>
+        {
+          isAuthStatus === AuthorizationStatus.NoAuth &&
+          <>
+            <Link
+              to={getSignIntUrl()}
+              className="btn btn--list film-card__button"
+              type="button"
+              onClick={handleAddToFavorite}
+            >
+              <svg viewBox="0 0 19 20" width="19" height="20">
+                <use xlinkHref="#add"></use>
+              </svg>
+
+              <span>My list</span>
+              <span className="film-card__count">0</span>
+            </Link>
+            <Link
+              to={getSignIntUrl()}
+              className="btn film-card__button"
+            >
+               Add review
+            </Link>
+          </>
+        }
 
         {
           isAuthStatus === AuthorizationStatus.Auth &&
-          <button
-            className="btn btn--list film-card__button"
-            type="button"
-            onClick={handleAddToFavorite}
-          >
-            {
-              isFavorite ?
+          <>
+            <button
+              className="btn btn--list film-card__button"
+              type="button"
+              onClick={handleAddToFavorite}
+            >
+              {isFavorite ?
                 <svg viewBox="0 0 18 14" width="18" height="14">
                   <use xlinkHref="#in-list"></use>
                 </svg>
                 :
                 <svg viewBox="0 0 19 20" width="19" height="20">
                   <use xlinkHref="#add"></use>
-                </svg>
-            }
+                </svg>}
 
-            <span>My list</span>
-            <span className="film-card__count">{favoriteCount}</span>
-          </button>
-        }
-
-        {
-          isAuthStatus === AuthorizationStatus.Auth &&
-          <Link
-            to={getAddReviewUrl(id)}
-            className="btn film-card__button"
-          >
-            Add review
-          </Link>
+              <span>My list</span>
+              <span className="film-card__count">{favoriteCount}</span>
+            </button>
+            <Link
+              to={getAddReviewUrl(id)}
+              className="btn film-card__button"
+            >
+                Add review
+            </Link>
+          </>
         }
       </div>
     </div>

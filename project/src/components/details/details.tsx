@@ -1,4 +1,5 @@
 import { FilmType } from '../../types/films';
+import { humanizeDuration } from '../../utils/common';
 
 type DetailsProps = {
   film: FilmType,
@@ -13,6 +14,8 @@ function Details({film}: DetailsProps): JSX.Element {
     genre,
     released,
   } = film;
+
+  const humanizeRuntime = humanizeDuration(runTime);
 
   return (
     <div className="film-card__text film-card__row">
@@ -30,7 +33,7 @@ function Details({film}: DetailsProps): JSX.Element {
       <div className="film-card__text-col">
         <p className="film-card__details-item">
           <strong className="film-card__details-name">Run Time</strong>
-          <span className="film-card__details-value">{runTime}</span>
+          <span className="film-card__details-value">{humanizeRuntime}</span>
         </p>
         <p className="film-card__details-item">
           <strong className="film-card__details-name">Genre</strong>

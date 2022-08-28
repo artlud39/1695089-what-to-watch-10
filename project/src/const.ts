@@ -65,10 +65,14 @@ export const SHOW_FILMS_STEP = 8;
 
 export const MAX_COUNT_SHOW_SIMILAR_FILMS = 4;
 
-export const TIMEOUT_SHOW_ERROR = 5000;
+export const BACKEND_URL = 'https://10.react.pages.academy/wtw';
+
+export const REQUEST_TIMEOUT = 5000;
 
 export const DEFAULT_GENRE = 'All Genres';
 
 export const DEFAULT_RATING = 0;
 
 export const QUERY_PARAM_NAME = 'tab';
+
+export const PREVIEW_VIDEO_PLAY_TIMEOUT = 1000;

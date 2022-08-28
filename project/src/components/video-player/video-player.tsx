@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { PREVIEW_VIDEO_PLAY_TIMEOUT } from '../../const';
 
 type VideoPlayerProps = {
   previewVideoLink: string,
@@ -12,7 +13,7 @@ function VideoPlayer({previewVideoLink, posterImage}: VideoPlayerProps): JSX.Ele
   useEffect(() => {
     const playVideoTimeout = setTimeout(() =>
       videoRef.current && videoRef.current.play(),
-    1000);
+    PREVIEW_VIDEO_PLAY_TIMEOUT);
 
     return () => clearTimeout(playVideoTimeout);
   }, [previewVideoLink]);
