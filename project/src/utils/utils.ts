@@ -18,5 +18,4 @@ export const validatorFormSignIn = (email: string, password: string): string | n
 
   return null;
 };
-// const isEmailValid = /^\S+@\S+\.\S+$/.test(email);
-// const isPasswordValid = /^(?=^[a-zA-Z0-9]{2,}$)(?=.*\d)(?=.*[a-zA-Z]).*$/.test(password);
+
